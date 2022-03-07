@@ -1,36 +1,143 @@
 *, *::before, *::after{
     box-sizing: border-box;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-weight: normal;
 }
 body{
     padding: 0;
     margin: 0;
-    background: linear-gradient(to right,#00beee,#0067ee);
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    background: linear-gradient(to right,#0c3b47,#5e96df);
 }
+.bubbles{
+    position: absolute;
+    bottom: 100px;
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+.bubbles span{
+    height: 60px;
+    width: 60px;
+    background: rgba(255, 255, 255, 0.1) ;
+    box-shadow: o 20px 50px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(5px);
+    animation: move 10s linear infinite ;
+    position: relative;
+    overflow: hidden;
+}
+@keyframes move {
+    100%{
+        transform: translateY(-90vh);
+    }
+}
+.bubbles span.one{
+    animation-delay: 2.2s;
+    transform: scale(2.15);
+}
+.bubbles span.two{
+    animation-delay: 3.5s;
+    transform: scale(1.55);
+}
+.bubbles span.three{
+    animation-delay: 0.2s;
+    transform: scale(0.35);
+}
+.bubbles span.four{
+    animation-delay: 6s;
+    transform: scale(2.15);
+}
+.bubbles span.five{
+    animation-delay: 7s;
+    transform: scale(0.5);
+}
+.bubbles span.six{
+    animation-delay: 4s;
+    transform: scale(5);
+}
+.bubbles span.seven{
+    animation-delay: 3s;
+    transform: scale(0.5);
+}
+
+.bubbles span::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 60px;
+    width: 40%;
+    transform: skew(45deg) translateX(150px);
+    animation: mirror 3s linear infinite;
+    background: rgba(255, 255, 255, 0.15);
+}
+@keyframes mirror {
+    100%{
+        transform: translateX(-450px) ;
+    }
+}
+
+.bubbles span.one::before{
+    animation-delay: 1.5s;
+}
+.bubbles span.two::before{
+    animation-delay: 3.5s;
+}
+.bubbles span.three::before{
+    animation-delay: 2.5s;
+}
+.bubbles span.four::before{
+    animation-delay: 7.5s;
+}
+.bubbles span.five::before{
+    animation-delay: 4.5s;
+}
+.bubbles span.six::before{
+    animation-delay: 0.5s;
+}
+.bubbles span.seven::before{
+    animation-delay: 6s;
+}
+
 .calculator-grid{
     display: grid;
     justify-content: center;
     align-content: center;
     min-height: 100vh;
+    /* background: rgba(255, 255, 255, 0.1); */
     grid-template-columns: repeat(4, 90px);
     grid-template-rows: minmax(120px, auto)repeat(5,90px);
+}
+.calculator-grid > button.span-two{
+    border-radius: 20px;
+    grid-column: span 2;
 }
 .calculator-grid > button {
     cursor: pointer;
     font-size: 2rem;
     border: 1px solid white;
-    border-radius:50%;
+    border-radius:0 50% 50% 50%;
     margin: 0.5rem;
     outline: none;
-    background-color: rgba(255, 255, 255, 0.75);
+    /* background-color: rgba(228, 211, 211, 0.75); */
+    backdrop-filter: blur(5px);
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: rgba(0, 0, 0, 0.15);
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
 }
+
 .calculator-grid > button:hover{
     background-color: rgba(255, 255, 255, 0.9);
 }
 .output{
     grid-column: 1 / -1;
-    background-color: rgba(0, 0, 0, 0.75);
+    /* background-color: rgba(0, 0, 0, 0.5); */
+    backdrop-filter: blur(5px);
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.5);
     display: flex;
     align-items: flex-end;
     justify-content: space-around;
@@ -38,7 +145,7 @@ body{
     padding: 10px;
     word-wrap: break-word;
     word-break: break-all;
-    border-radius: 20px;
+    border-radius:0 50px 0 50px;
     
 }
 .output .previous-operand{
